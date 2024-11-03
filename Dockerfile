@@ -5,6 +5,9 @@ FROM lunasec/tomcat-9.0.59-jdk11
 ADD src/ /helloworld/src
 ADD pom.xml /helloworld
 
+# Add flag.txt as a secret file in the specified directory
+RUN mkdir -p /secret && echo "Congratulations! You caught the flag!!!" > /secret/flag.txt
+
 #  Build spring app
 RUN apt update && apt install maven -y
 WORKDIR /helloworld/
